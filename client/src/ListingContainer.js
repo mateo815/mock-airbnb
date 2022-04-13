@@ -1,12 +1,22 @@
 import React from 'react'
-import ListingCard from './ListingPage'
+
 import { Link } from 'react-router-dom';
+
 import Listing from './Listing';
 
+
 function ListingContainer({listings}) {
+  
+  
   console.log(listings)
-  
-  
+
+    const allListings = listings.map((l) => (
+      <div>
+        <img src={l.url} ></img>
+        <h5>{l.city}</h5>
+        <h6>${l.price.rate} per night</h6>
+      </div>
+    ))
   
   
     const rows = [...Array( Math.ceil(listings.length / 4) )]; 
@@ -32,6 +42,9 @@ function ListingContainer({listings}) {
               </div>
           )})}
       </div>
+      // <div>
+      //   {allListings}
+      // </div>
       )}
 
 

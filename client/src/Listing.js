@@ -1,19 +1,8 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-
-function Listing({listing}) {
-
-
-  
-
-
+function Listing() {
   return (
-    <div>
-        <img src={listing.image_url} alt='city' />
-        {listing.location} 
-        {listing.price}
-        
-    </div>
+    <div>Listing</div>
   )
 }
 

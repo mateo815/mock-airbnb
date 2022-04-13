@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-    root 'listings#index'
+
     
       resources :reservations
       resources :listings
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   #check is user is logged in
   get '/logged_in', to:"sessions#is_logged_in"
 
-  get '/listings', to: 'listings#get_listings'
+  get '/listings', to: 'listings#index'
 
   post '/search', to: 'listings#search'
 

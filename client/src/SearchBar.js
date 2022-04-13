@@ -1,34 +1,36 @@
 import React, { useState, useEffect } from 'react'
 
-function SearchBar({listings}) {
+function SearchBar({onSubmit, setLocation}) {
   
-  // const [filteredListings, setFilteredListings] = useState([])
-  const [location, setLocation] = useState('')
+  
+  // const [location, setLocation] = useState('')
+  // const [listings, setListings] = useState([])
+  
 
-  // const handleFilter = (e) => {
-  //   const searchLocation = e.target.value;
-  //   setLocation(searchLocation);
-  //   const newFilter = listings.filter((listing) => {
-  //     return listing.location.toLowerCase().includes(searchLocation.toLowerCase());
-  //   });
+  
+
+  // const onSubmit = (e) => {
+  //   e.preventDefault()
+    
+  //   fetch("/search", {
+  //     method:'POST',
+  //     headers: {"Content-Type": "application/json"},
+      
+  //     body: JSON.stringify({location: location})
+  //   })
+  //   .then((r) => r.json())
+  //   .then(data => setListings(data))
   // }
 
-  const onSubmit = (e) => {
-    e.preventDefault()
-    
-    fetch("/search", {
-      method:'POST',
-      headers: {"Content-Type": "application/json"},
-      
-      body: JSON.stringify({location: location})
-    })
-    .then((r) => r.json())
-    .then(data => console.log(data))
-  }
+ 
+
+//   const searchListings = (input) => {
+//     const availableListings = listings.map((l) => l.city === input.city)
+//     setListings(availableListings)
+// }
 
     
-    
-
+  
   
 
   return (
@@ -40,12 +42,13 @@ function SearchBar({listings}) {
                 </div>
                 <button className="form-button" type="submit" >Search</button>
       </form>
-      <div className='searchResult'>
+      
+      {/* <div className='searchResult'>
         {listings.map((value, key) => {
           return <div> {value.location} </div>
         })}
 
-      </div>
+      </div> */}
     </div>
   );
 }

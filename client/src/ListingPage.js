@@ -4,11 +4,13 @@ import { Switch, Route, useParams} from 'react-router-dom'
 
 function ListingPage({listings, addRes}) {
   
-  const {id} = useParams()
-  const listing = listings.find(l => l.id === parseInt(id))
+  const listing_id = useParams()
+  
+  // const listing = listings.find(l => l.id === parseInt(id))
 
   const [checkIn, setCheckIn] = useState('')
   const [checkOut, setCheckOut] = useState('')
+  const [listingId, setListingId] = useState('')
 
   const onSubmit = (e) => {
       e.preventDefault()
@@ -16,6 +18,7 @@ function ListingPage({listings, addRes}) {
       const newResi = {
         check_in: checkIn,
         check_out: checkOut,
+        listing_id: listing_id
       }
       
       fetch("/reservations", {
@@ -34,9 +37,7 @@ function ListingPage({listings, addRes}) {
 
   return (
     <div>
-      <img src={listing.image_url} alt='city' />
-      <h4>{listing.location}</h4>
-      <h5>${listing.price}</h5>
+      
       <div className='search'>
         <form onSubmit={onSubmit} className='form' >
                 <div className="field">

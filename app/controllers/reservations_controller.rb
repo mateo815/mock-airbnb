@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
     def create
         @current_user = User.find_by(id: session[:user_id]) 
             
-            newRes = Reservation.create(check_in: params[:check_in], check_out: params[:check_out], user_id: @current_user.id)
+            newRes = Reservation.create(check_in: params[:check_in], check_out: params[:check_out], user_id: @current_user.id, listing_id: params[:listing_id])
             byebug
             if newRes.valid?
                 render json: newRes, status: :created
@@ -27,7 +27,7 @@ class ReservationsController < ApplicationController
     private
 
     def reservation_params
-        params.require(:reservation).permit(:check_in, :check_out)
+        params.require(:reservation).permit(:check_in, :check_out, :listing_id)
     end
 
 

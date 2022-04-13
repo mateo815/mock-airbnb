@@ -21,7 +21,7 @@ function App() {
 
   const [user, setUser] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [listings, setListings] = useState([])
+  // const [listings, setListings] = useState([])
   const [reservations, setReservations] = useState([])
 
   // const options = {
@@ -40,11 +40,13 @@ function App() {
 
   // }, [])
 
-  useEffect(() => {
-    fetch("/listings")
-      .then(response => response.json())
-       .then(data => setListings(data))
-}, [])
+//   useEffect(() => {
+//     fetch("/listings")
+//       .then(response => response.json())
+//        .then(data => setListings(data))
+// }, [])
+
+
 
 useEffect(() => {
   fetch("/reservations")
@@ -57,20 +59,21 @@ const addRes = (r) => {
   setReservations(newRes)
 }
 
- 
-  // useEffect(() => {
-  //   fetch("/listings")
-  //     .then(r=>{
-  //       if(r.ok){
-  //         r.json().then(data => setListings(data))
-  //       }else{
-  //         r.json().then(console.log)
-  //       }
-  //     })
-  // }, [])
+const [location, setLocation] = useState('')
+const [listings, setListings] = useState([])
 
- 
+const onSubmit = (e) => {
+  e.preventDefault()
   
+  fetch("/search", {
+    method:'POST',
+    headers: {"Content-Type": "application/json"},
+    
+    body: JSON.stringify({location: location})
+  })
+  .then((r) => r.json())
+  .then(data => setListings(data))
+}
 
 
   useEffect(() => {
@@ -100,17 +103,17 @@ const addRes = (r) => {
 
   return (
     <div>
-    <div>
-    <Switch>
-      <Route path='/listings/:id'>
-            <ListingPage addRes={addRes} listings={listings}/>
-      </Route>
-      <Route path="/">
-            <HomePage user ={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn} listings={listings} />
-      </Route>
-    </Switch>
-    
-    </div>
+      <div>
+      <Switch>
+        <Route path='/listings/:id'>
+              <ListingPage addRes={addRes} listings={listings} />
+        </Route>
+        <Route path="/">
+              <HomePage user ={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn} listings={listings} onSubmit={onSubmit} setLocation={setLocation} />
+        </Route>
+      </Switch>
+      
+      </div>
     </div>
     
   );
