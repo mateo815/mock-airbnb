@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
-
   
-
-  # namespace :api do
-  #   namespace :v1 do
-  
+    root 'listings#index'
+    
       resources :reservations
       resources :listings
       resources :users
 
-       # routes for login logout 
+  # routes for login logout 
   #signup --> users#signup
   post "/signup", to: "users#signup"
   # shows current user
@@ -23,9 +20,12 @@ Rails.application.routes.draw do
   get '/logged_in', to:"sessions#is_logged_in"
 
   get '/listings', to: 'listings#get_listings'
-   
-  #   end
 
-  # end
+  post '/search', to: 'listings#search'
+
+  post '/reserve', to: 'reservations#reserve'
+
+
+  
 
 end

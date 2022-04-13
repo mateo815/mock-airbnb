@@ -1,10 +1,10 @@
 import React from 'react'
+import LogoutButton from './LogoutButton'
 
-
-function Header() {
+function Header({setUser}) {
   return (
     <div className='header__center'>
-        <input type="text" />
+        <LogoutButton setUser={setUser}/>
     </div>
   )
 }

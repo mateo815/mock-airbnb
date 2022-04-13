@@ -1,28 +1,28 @@
 class ListingsController < ApplicationController
-    
 
-    def get_listings
-        require 'uri'
-        require 'net/http'
-        require 'openssl'
-        
-        url = URI("https://mashvisor-api.p.rapidapi.com/rental-rates?state=Il&source=airbnb&city=Chicago")
-        
-        http = Net::HTTP.new(url.host, url.port)
-        http.use_ssl = true
-        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-        
-        request = Net::HTTP::Get.new(url)
-        request["X-RapidAPI-Host"] = 'mashvisor-api.p.rapidapi.com'
-        request["X-RapidAPI-Key"] = '383737d655msh5c51b656428ee73p1c3e16jsnf76f5d938716'
-        
-        response = http.request(request)
-        puts response.read_body
+
+    def search 
+        parsedstring = CGI.escape(params[:location])
+        url = "https://airbnb13.p.rapidapi.com/search-location?location=#{parsedstring}&checkin=2022-05-16&checkout=2022-05-17&adults=1&children=0&infants=0&page=1"
+        api = RestClient.get(url, headers={'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com','X-RapidAPI-Key': '383737d655msh5c51b656428ee73p1c3e16jsnf76f5d938716'})
+        render json: {message: JSON.parse(api)}
+
     end
 
     def index
-        listings = Listing.all()
-        render json: listings
+        render json: Listing.all
+    end
+
+    # def index
+    #     url = 'https://airbnb13.p.rapidapi.com/search-location?location=United%20States&checkin=2022-05-16&checkout=2022-05-17&adults=1&children=0&infants=0&page=1'
+    #     api = RestClient.get(url, headers={'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com','X-RapidAPI-Key': '383737d655msh5c51b656428ee73p1c3e16jsnf76f5d938716'})
+    #     render json: {message: JSON.parse(api)}
+    # end
+
+    def show
+        listing = Listing.find_by!(id: params[:id])
+        render json: listing, status: :ok
     end
 end
+
 

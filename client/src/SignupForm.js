@@ -48,7 +48,7 @@ function SignupForm(props) {
                 </div>
                 <div className="field">
                     <label>Password Confirmation</label>
-                    <input type="password confirm" onChange={(e) => setPasswordConfirm(e.target.value)} />
+                    <input type="password" onChange={(e) => setPasswordConfirm(e.target.value)} />
                 </div>
                 <button className="form-button" type="submit" >Submit</button>
             </form>

@@ -11,6 +11,9 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import ListingPage from './ListingPage'
+import ListingContainer from './ListingContainer';
+
 
 
 
@@ -19,21 +22,54 @@ function App() {
   const [user, setUser] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [listings, setListings] = useState([])
+  const [reservations, setReservations] = useState([])
 
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Host': 'airbnb-listings-data.p.rapidapi.com',
-      'X-RapidAPI-Key': '383737d655msh5c51b656428ee73p1c3e16jsnf76f5d938716'
-    }
-  };
-  
-  fetch('https://airbnb-listings-data.p.rapidapi.com/getListingsData?nwLat=29.792697441798765&nwLng=-98.73911255534364&seLat=29.360943802211537&seLng=-98.20696228678895', options)
+  // const options = {
+  //   method: 'GET',
+  //   headers: {
+  //     'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com',
+  //     'X-RapidAPI-Key': '383737d655msh5c51b656428ee73p1c3e16jsnf76f5d938716'
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetch('https://airbnb13.p.rapidapi.com/search-location?location=United%20States&checkin=2022-05-16&checkout=2022-05-17&adults=1&children=0&infants=0&page=1', options)
+  //   .then(response => response.json())
+  //   .then(response => setListings(response))
+  //   .catch(err => console.error(err));
+
+  // }, [])
+
+  useEffect(() => {
+    fetch("/listings")
+      .then(response => response.json())
+       .then(data => setListings(data))
+}, [])
+
+useEffect(() => {
+  fetch("/reservations")
     .then(response => response.json())
-    .then(response => setListings(response))
-    .catch(err => console.error(err));
+     .then(data => setReservations(data))
+}, [])
 
-  console.log(listings.message)
+const addRes = (r) => {
+  const newRes = [...reservations, r]
+  setReservations(newRes)
+}
+
+ 
+  // useEffect(() => {
+  //   fetch("/listings")
+  //     .then(r=>{
+  //       if(r.ok){
+  //         r.json().then(data => setListings(data))
+  //       }else{
+  //         r.json().then(console.log)
+  //       }
+  //     })
+  // }, [])
+
+ 
   
 
 
@@ -50,11 +86,13 @@ function App() {
   }
   , [])
 
+  
+
   if ((!(user))) {
     return(
      <Switch>
        <Route path="/">
-        <StartPage setUser={setUser} setIsLoggedIn={setIsLoggedIn}/>
+        <StartPage setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
        </Route>
      </Switch>
     )
@@ -62,13 +100,17 @@ function App() {
 
   return (
     <div>
+    <div>
     <Switch>
-      <Route path="/">
-            <HomePage user ={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn}/>
+      <Route path='/listings/:id'>
+            <ListingPage addRes={addRes} listings={listings}/>
       </Route>
-
+      <Route path="/">
+            <HomePage user ={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn} listings={listings} />
+      </Route>
     </Switch>
     
+    </div>
     </div>
     
   );
