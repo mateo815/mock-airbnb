@@ -21,46 +21,14 @@ function App() {
 
   const [user, setUser] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  // const [listings, setListings] = useState([])
-  const [reservations, setReservations] = useState([])
-
-  // const options = {
-  //   method: 'GET',
-  //   headers: {
-  //     'X-RapidAPI-Host': 'airbnb13.p.rapidapi.com',
-  //     'X-RapidAPI-Key': '383737d655msh5c51b656428ee73p1c3e16jsnf76f5d938716'
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetch('https://airbnb13.p.rapidapi.com/search-location?location=United%20States&checkin=2022-05-16&checkout=2022-05-17&adults=1&children=0&infants=0&page=1', options)
-  //   .then(response => response.json())
-  //   .then(response => setListings(response))
-  //   .catch(err => console.error(err));
-
-  // }, [])
-
-//   useEffect(() => {
-//     fetch("/listings")
-//       .then(response => response.json())
-//        .then(data => setListings(data))
-// }, [])
+  const [location, setLocation] = useState('')
+  const [listings, setListings] = useState([])
 
 
 
-useEffect(() => {
-  fetch("/reservations")
-    .then(response => response.json())
-     .then(data => setReservations(data))
-}, [])
 
-const addRes = (r) => {
-  const newRes = [...reservations, r]
-  setReservations(newRes)
-}
 
-const [location, setLocation] = useState('')
-const [listings, setListings] = useState([])
+
 
 const onSubmit = (e) => {
   e.preventDefault()
@@ -68,7 +36,6 @@ const onSubmit = (e) => {
   fetch("/search", {
     method:'POST',
     headers: {"Content-Type": "application/json"},
-    
     body: JSON.stringify({location: location})
   })
   .then((r) => r.json())
@@ -83,11 +50,10 @@ const onSubmit = (e) => {
         .then((user) => { 
           setIsLoggedIn(true)
           setUser(user)
-        })
-      }
-    })
-  }
-  , [])
+          })
+        }
+      })
+    },[])
 
   
 
@@ -106,7 +72,7 @@ const onSubmit = (e) => {
       <div>
       <Switch>
         <Route path='/listings/:id'>
-              <ListingPage addRes={addRes} listings={listings} />
+              <ListingPage  listings={listings} />
         </Route>
         <Route path="/">
               <HomePage user ={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn} listings={listings} onSubmit={onSubmit} setLocation={setLocation} />

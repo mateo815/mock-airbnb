@@ -2,23 +2,30 @@ import React, {useState} from 'react'
 import { Switch, Route, useParams} from 'react-router-dom'
 
 
-function ListingPage({listings, addRes}) {
+function ListingPage({listings}) {
   
-  const listing_id = useParams()
+  const {id} = useParams() 
+  const listing = listings.find(l => l.id == id)
   
-  // const listing = listings.find(l => l.id === parseInt(id))
+  console.log(listing)
+  
 
-  const [checkIn, setCheckIn] = useState('')
-  const [checkOut, setCheckOut] = useState('')
-  const [listingId, setListingId] = useState('')
+  const [check_in, setCheckIn] = useState('')
+  const [check_out, setCheckOut] = useState('')
+  
 
   const onSubmit = (e) => {
       e.preventDefault()
+      console.log(listing)
 
       const newResi = {
-        check_in: checkIn,
-        check_out: checkOut,
-        listing_id: listing_id
+        check_in: check_in,
+        check_out: check_out,
+        apiId: id,
+        location: listing.city,
+        price: listing.price.rate,
+        description: listing.name
+
       }
       
       fetch("/reservations", {
@@ -28,8 +35,8 @@ function ListingPage({listings, addRes}) {
         body: JSON.stringify(newResi)
       })
       .then((r) => r.json())
-      .then(data => addRes(data))
-      e.target.reset()
+      .then(alert(`Enjoy your Stay!`))
+      
     }
   
 

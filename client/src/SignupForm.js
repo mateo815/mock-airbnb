@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 // redux hooks:
 
 
-function SignupForm(props) {
+function SignupForm() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

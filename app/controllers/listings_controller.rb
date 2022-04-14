@@ -10,6 +10,13 @@ class ListingsController < ApplicationController
         render json: finalresponse
     end
 
+    def show
+        listing = Listing.find_by!(id: params[:id])
+        render json: listing
+    end
+
+    
+
     # def index
     #     parsedstring = CGI.escape(params[:location])
     #     url = "https://airbnb13.p.rapidapi.com/search-location?location=#{parsedstring}&checkin=2022-05-16&checkout=2022-05-17&adults=1&children=0&infants=0&page=1"
@@ -26,10 +33,7 @@ class ListingsController < ApplicationController
     #     render json: {message: JSON.parse(api)}
     # end
 
-    def show
-        listing = Listing.find_by!(id: params[:id])
-        render json: listing, status: :ok
-    end
+    
 end
 
 

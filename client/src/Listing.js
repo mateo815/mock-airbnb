@@ -1,8 +1,12 @@
 import React from 'react'
 
-function Listing() {
+function Listing({listing}) {
+
+  
   return (
-    <div>Listing</div>
+    <div>
+      <img src={listing.images[0]}></img>
+    </div>
   )
 }
 
