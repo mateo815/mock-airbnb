@@ -21,7 +21,7 @@ function ListingPage({listings}) {
       const newResi = {
         check_in: check_in,
         check_out: check_out,
-        apiId: id,
+        api_id: id,
         location: listing.city,
         price: listing.price.rate,
         description: listing.name
