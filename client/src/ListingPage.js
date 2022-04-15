@@ -46,7 +46,22 @@ function ListingPage({listings}) {
     <div>
       
       <div className='search'>
-        <form onSubmit={onSubmit} className='form' >
+        <div className='page_info'>
+          <div id='image_container'>
+            <img className='page_images' src={listing.images[0]}></img>
+            <img className='page_images' src={listing.images[1]}></img>
+            <img className='page_images' src={listing.images[2]}></img>
+            <img className='page_images' src={listing.images[3]}></img>
+            {/* <img className='page_images' src={listing.images[3]}></img>
+            <img className='page_images' src={listing.images[3]}></img> */}
+          </div>
+          <div id="description_container">
+          <h4>{listing.address}</h4>
+          <h5>${listing.price.rate}/night</h5>
+          <p>{listing.name}</p>
+          </div>
+        </div>
+        <form onSubmit={onSubmit} className='listing_page_form' >
                 <div className="field">
                     <label>Check In Date</label>
                     <input type="text" onChange={(e) => setCheckIn(e.target.value)} placeholder="DD/MM/YYYY"/>

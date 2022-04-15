@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+#image_container {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+/* Resize images */
+  #image_container > img {
+  float: left;
+  border: 2px solid black;
+  width: 45%;
+  height: 45%;
+  margin: 1.66%;
+  object-fit: cover;
+}
+
+#description_container {
+  text-align: center;
+}
+
+.listing_page_form {
+  text-align: center;
+}
+
