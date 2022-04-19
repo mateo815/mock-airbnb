@@ -89,12 +89,14 @@
 }
 
 .header__center {
-  background-color: #00FFFF;
+  background-color: #3fb0ac;
 }
 
-#root {
-  background-color: #FF69B4;
+.app {
+  background-color: #fae596;
 }
+
+
 
 
 

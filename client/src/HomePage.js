@@ -5,15 +5,18 @@ import LogoutButton from './LogoutButton'
 import ListingContainer from './ListingContainer'
 import Header from './Header'
 
-function HomePage({setUser, setLocation, onSubmit, listings}) {
+function HomePage({setUser, setLocation, onSubmit, listings, user}) {
  
   
 
   return (
     <div className='home'>
-        <Header setUser={setUser} />
+        <Header setUser={setUser} user={user}/>
+        <div className="has-bg-img">
         <SearchBar setLocation={setLocation} onSubmit={onSubmit}/>
         <ListingContainer listings={listings} />
+        <img className="bg-img"></img>
+        </div>
     </div>
   )
 }

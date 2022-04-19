@@ -67,14 +67,12 @@ const onSubmit = (e) => {
     )
   }
 
-  return (
-    <div>
-      <div>
-      <Switch>
-        <Route path='/reservations'>
+  console.log(user)
 
-        </Route>
-      </Switch>
+  return (
+    <div className='app'>
+      <div>
+        
       <Switch>
         <Route path='/listings/:id'>
               <ListingPage  listings={listings} />

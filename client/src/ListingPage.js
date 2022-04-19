@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { Switch, Route, useParams, Link} from 'react-router-dom'
+import Header from './Header'
 
 
 function ListingPage({listings}) {
@@ -44,7 +45,7 @@ function ListingPage({listings}) {
 
   return (
     <div>
-      
+      <Header />
       <div className='search'>
         <div className='page_info'>
           <div id='image_container'>
@@ -68,9 +69,9 @@ function ListingPage({listings}) {
                     <label>Check Out Date</label>
                     <input type="text" onChange={(e) => setCheckOut(e.target.value)} placeholder="DD/MM/YYYY"/>
                 </div>
-                <Link to='/'>
+                
                 <button className="form-button" type="submit" >Rent</button>
-                </Link>
+                
         </form>
       </div>
     </div>
