@@ -1,23 +1,11 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import Listing from './Listing';
 
 
 function ListingContainer({listings}) {
-  
-  
-  console.log(listings)
-
-    // const allListings = listings.map((l) => (
-    //   <div>
-    //     <img src={l.url} ></img>
-    //     <h5>{l.city}</h5>
-    //     <h6>${l.price.rate} per night</h6>
-    //   </div>
-    // ))
-  
   
     const rows = [...Array( Math.ceil(listings.length / 4) )]; 
     // // chunk the products into the array of rows
@@ -36,17 +24,16 @@ function ListingContainer({listings}) {
                       // console.log(post)
                       return(
                       <div  key={listing.id} className='col-md-3'>
-                          <Link to={`/listings/${listing.id}`} >
+                          <NavLink to={`/listings/${listing.id}`} >
                               <Listing  listing={listing} key={listing.id}/>
-                          </Link>
+                          </NavLink>
+                          <h5>{listing.address}</h5>
+                          <p>${listing.price.rate}/night</p>
                       </div>
                   )})}
               </div>
           )})}
       </div>
-      // <div>
-      //   {allListings}
-      // </div>
       )}
 
 

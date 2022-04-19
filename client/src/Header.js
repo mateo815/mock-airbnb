@@ -5,7 +5,11 @@ function Header({setUser}) {
   return (
     <div className='header__center'>
         <LogoutButton setUser={setUser}/>
-    </div>
+  
+          <h1>
+            <span id='title'>airMQ</span>
+          </h1>
+      </div>
   )
 }
 

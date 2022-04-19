@@ -71,6 +71,11 @@ const onSubmit = (e) => {
     <div>
       <div>
       <Switch>
+        <Route path='/reservations'>
+
+        </Route>
+      </Switch>
+      <Switch>
         <Route path='/listings/:id'>
               <ListingPage  listings={listings} />
         </Route>

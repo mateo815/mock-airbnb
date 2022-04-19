@@ -1,54 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 function SearchBar({onSubmit, setLocation}) {
-  
-  
-  // const [location, setLocation] = useState('')
-  // const [listings, setListings] = useState([])
-  
-
-  
-
-  // const onSubmit = (e) => {
-  //   e.preventDefault()
-    
-  //   fetch("/search", {
-  //     method:'POST',
-  //     headers: {"Content-Type": "application/json"},
-      
-  //     body: JSON.stringify({location: location})
-  //   })
-  //   .then((r) => r.json())
-  //   .then(data => setListings(data))
-  // }
-
- 
-
-//   const searchListings = (input) => {
-//     const availableListings = listings.map((l) => l.city === input.city)
-//     setListings(availableListings)
-// }
-
-    
-  
-  
 
   return (
-    <div className='search'> Where you Heading?
+    <div className='search'> Where are you going?
       <form onSubmit={onSubmit} className='form' >
                 <div className="field">
-                    <label>search</label>
-                    <input type="text"  onChange={(e) => setLocation(e.target.value)} />
-                </div>
-                <button className="form-button" type="submit" >Search</button>
+                    <input type="text"  onChange={(e) => setLocation(e.target.value)} placeholder='Enter Destination' />
+                    <button className="form-button" type="submit" >Search</button>
+                </div> 
       </form>
       
-      {/* <div className='searchResult'>
-        {listings.map((value, key) => {
-          return <div> {value.location} </div>
-        })}
-
-      </div> */}
+      
     </div>
   );
 }

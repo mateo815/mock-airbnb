@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Switch, Route, useParams} from 'react-router-dom'
+import { Switch, Route, useParams, Link} from 'react-router-dom'
 
 
 function ListingPage({listings}) {
@@ -68,7 +68,9 @@ function ListingPage({listings}) {
                     <label>Check Out Date</label>
                     <input type="text" onChange={(e) => setCheckOut(e.target.value)} placeholder="DD/MM/YYYY"/>
                 </div>
+                <Link to='/'>
                 <button className="form-button" type="submit" >Rent</button>
+                </Link>
         </form>
       </div>
     </div>
