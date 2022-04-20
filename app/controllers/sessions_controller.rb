@@ -2,11 +2,16 @@ class SessionsController < ApplicationController
 
     skip_before_action :authorize, only: :login
 
+    def personal_reservations
+        user = User.find_by!(id: session[:user_id])
+        render json: user.reservations, status: :ok
+    end
+
     def login 
         user = User.find_by(email: params[:email])
         if user&.authenticate(params[:password])
             session[:user_id] = user.id
-            render json: user
+            render json: user, methods: [:personal_reservations]
         else 
             render json: {errors: ["Invalid email or password"]},status: :unauthorized
         end
@@ -20,4 +25,6 @@ class SessionsController < ApplicationController
         session.delete :user_id
         head :no_content
     end
+
+    
 end

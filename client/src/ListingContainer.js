@@ -5,7 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 import Listing from './Listing';
 
 
-function ListingContainer({listings}) {
+function ListingContainer({listings, user}) {
   
     const rows = [...Array( Math.ceil(listings.length / 4) )]; 
     // // chunk the products into the array of rows
@@ -25,7 +25,7 @@ function ListingContainer({listings}) {
                       return(
                       <div  key={listing.id} className='col-md-3'>
                           <NavLink to={`/listings/${listing.id}`} >
-                              <Listing  listing={listing} key={listing.id}/>
+                              <Listing  listing={listing} key={listing.id} user={user}/>
                           </NavLink>
                           <h5>{listing.address}</h5>
                           <p>${listing.price.rate}/night</p>

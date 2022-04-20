@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   post '/reserve', to: 'reservations#reserve'
 
+  get '/users', to: 'users#personal_reservations'
+
 
   
 

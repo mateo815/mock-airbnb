@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import ListingPage from './ListingPage'
 import ListingContainer from './ListingContainer';
+import ProfileInfo from './ProfileInfo';
 
 
 
@@ -23,24 +24,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [location, setLocation] = useState('')
   const [listings, setListings] = useState([])
-
-
-
-
-
-
-
-const onSubmit = (e) => {
-  e.preventDefault()
-  
-  fetch("/search", {
-    method:'POST',
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({location: location})
-  })
-  .then((r) => r.json())
-  .then(data => setListings(data))
-}
 
 
   useEffect(() => {
@@ -55,27 +38,41 @@ const onSubmit = (e) => {
       })
     },[])
 
-  
-
   if ((!(user))) {
-    return(
-     <Switch>
-       <Route path="/">
-        <StartPage setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
-       </Route>
-     </Switch>
-    )
+      return(
+       <Switch>
+         <Route path="/">
+          <StartPage setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
+         </Route>
+       </Switch>
+      )
   }
 
-  console.log(user)
+const onSubmit = (e) => {
+  e.preventDefault()
+  
+  fetch("/search", {
+    method:'POST',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({location: location})
+  })
+  .then((r) => r.json())
+  .then(data => setListings(data))
+}
+
+console.log(user)
+ 
 
   return (
     <div className='app'>
       <div>
         
       <Switch>
+        <Route path={`/users/${user.id}`}>
+            <ProfileInfo user={user}  />
+        </Route>
         <Route path='/listings/:id'>
-              <ListingPage  listings={listings} />
+              <ListingPage  listings={listings}  user={user} setUser={setUser}/>
         </Route>
         <Route path="/">
               <HomePage user ={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn} listings={listings} onSubmit={onSubmit} setLocation={setLocation} />

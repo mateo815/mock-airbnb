@@ -3,7 +3,7 @@ import { Switch, Route, useParams, Link} from 'react-router-dom'
 import Header from './Header'
 
 
-function ListingPage({listings}) {
+function ListingPage({listings, user, setUser}) {
   
   const {id} = useParams() 
   const listing = listings.find(l => l.id == id)
@@ -43,9 +43,10 @@ function ListingPage({listings}) {
 
 
 
+    
   return (
     <div>
-      <Header />
+      <Header user={user} setUser={setUser}/>
       <div className='search'>
         <div className='page_info'>
           <div id='image_container'>

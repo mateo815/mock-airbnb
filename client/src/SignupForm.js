@@ -33,22 +33,23 @@ function SignupForm() {
 
     return (
         <div className="signup-form">
+            <h3>Signup</h3>
             <form className="form" onSubmit={handleSubmit}>
             <div className="form-outline mb-4">
                     <input onChange={(e) => setName(e.target.value)} type="text"  className="form-control" placeholder="Name" />
-                    <label className="form-label" htmlFor="login-pasword-input">Name</label>
+                    
                 </div>
                 <div className="form-outline mb-4">
                     <input onChange={(e) => setEmail(e.target.value)} type="text" id="login-pasword-input" className="form-control" placeholder="Email" />
-                    <label className="form-label" htmlFor="login-pasword-input">Email</label>
+                    
                 </div>
                 <div className="form-outline mb-4">
                     <input onChange={(e) => setPassword(e.target.value)} type="password" id="login-pasword-input" className="form-control" placeholder="Password" />
-                    <label className="form-label" htmlFor="login-pasword-input">Password</label>
+                    
                 </div>
                 <div className="form-outline mb-4">
                     <input onChange={(e) => setPasswordConfirm(e.target.value)} type="password" id="login-pasword-input" className="form-control" placeholder="Confirm Password" />
-                    <label className="form-label" htmlFor="login-pasword-input">Confrim Password</label>
+                    
                 </div>
                 <button className="form-button" type="submit" >Submit</button>
             </form>

@@ -1,3 +1,6 @@
+import react from "react"
+
+
 function LogoutButton({setUser}) {
 
     const handleLogout = () =>{
@@ -8,7 +11,7 @@ function LogoutButton({setUser}) {
 
 
   return (
-        <button onClick={handleLogout}>Logout</button>
+    <button onClick={handleLogout} type="button" >Logout</button>
   )
 }
 

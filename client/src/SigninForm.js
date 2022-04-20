@@ -36,19 +36,20 @@ function SigninForm({setUser, setIsLoggedIn}) {
 
 
     return (
-        <div className="sign-in-form">
+        <div className="login-form">
+            <h3>Login</h3>
             <form onSubmit={onSubmit}>
                 <div className="form-outline mb-4">
-                    <input onChange={(e) => setEmail(e.target.value)} type="text" id="login-username-input" className="form-control" placeholder="Name" />
-                    <label className="form-label" htmlFor="login-username-input">Name</label>
-                </div>
-                
-                <div className="form-outline mb-4">
-                    <input onChange={(e) => setPassword(e.target.value)} type="password" id="signup-password-input" className="form-control" placeholder="Password" />
-                    <label className="form-label" htmlFor="signup-password-input">Password</label>
+                    <input onChange={(e) => setEmail(e.target.value)} type="text" id="login-username-input" className="form-control" placeholder="Email" />
+                    
                 </div>
 
-                <button className="form-button" type="submit" >Log In</button>
+                <div className="form-outline mb-4">
+                    <input onChange={(e) => setPassword(e.target.value)} type="password" id="signup-password-input" className="form-control" placeholder="Password" />
+                    
+                </div>
+
+                <button type="submit" class="btn btn-secondary">Login</button>
             </form>
         </div>
         );
