@@ -4,13 +4,16 @@ function ProfileInfo({user}) {
 
   console.log(user.reservations)
 
-  const res = user.reservations.map((r) => r.check_out)
+  const res = user.reservations.map((r) => (
+    <li>{r.check_in}-{r.check_out}</li>
+  ))
+
   console.log(res)
 
   return (
-    <div>All time reservations
-      
-    </div>
+    <ul>
+      <li>{res}</li>
+    </ul>
   )
 }
 
