@@ -1,18 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
-import SignupForm from './SignupForm';
-import SigninForm from './SigninForm';
-import SearchBar from './SearchBar';
 import HomePage from './HomePage';
-import Header from './Header';
 import StartPage from './StartPage'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import ListingPage from './ListingPage'
-import ListingContainer from './ListingContainer';
+import {BrowserRouter, Switch, Route} from "react-router-dom";
+import ListingPage from './ListingPage';
 import ProfileInfo from './ProfileInfo';
 
 

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Switch, Route, useParams, Link} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import Header from './Header'
 
 
@@ -50,12 +50,10 @@ function ListingPage({listings, user, setUser}) {
       <div className='search'>
         <div className='page_info'>
           <div id='image_container'>
-            <img className='page_images' src={listing.images[0]}></img>
-            <img className='page_images' src={listing.images[1]}></img>
-            <img className='page_images' src={listing.images[2]}></img>
-            <img className='page_images' src={listing.images[3]}></img>
-            {/* <img className='page_images' src={listing.images[3]}></img>
-            <img className='page_images' src={listing.images[3]}></img> */}
+            <img className='page_images' src={listing.images[0]} alt='img'></img>
+            <img className='page_images' src={listing.images[1]} alt='img'></img>
+            <img className='page_images' src={listing.images[2]} alt='img'></img>
+            <img className='page_images' src={listing.images[3]} alt='img'></img>
           </div>
           <div id="description_container">
           <h4>{listing.address}</h4>

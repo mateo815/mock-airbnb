@@ -1,7 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import SearchBar from './SearchBar'
-import ListingCard from './ListingPage'
-import LogoutButton from './LogoutButton'
 import ListingContainer from './ListingContainer'
 import Header from './Header'
 
