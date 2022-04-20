@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import './App.css';
 import HomePage from './HomePage';
 import StartPage from './StartPage'
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {Switch, Route} from "react-router-dom";
 import ListingPage from './ListingPage';
 import ProfileInfo from './ProfileInfo';
 

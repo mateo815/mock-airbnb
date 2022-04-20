@@ -11,9 +11,10 @@ function ProfileInfo({user}) {
   console.log(res)
 
   return (
-    <ul>
-      <li>{res}</li>
-    </ul>
+    <div>
+      <h2>{user.name}'s Reservations</h2>
+      <ul><li>{res}</li></ul>
+    </div>
   )
 }
 

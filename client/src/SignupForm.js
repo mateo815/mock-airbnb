@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-// import history from '../../history';
-// redux hooks:
+
 
 
 function SignupForm() {
@@ -10,7 +9,6 @@ function SignupForm() {
     const [passwordConfirm, setPasswordConfirm] = useState('')
 
     const handleSubmit = (e) => {
-      // e.preventDefault()
       if(password !== passwordConfirm){
           return alert("passwords do not match")
       }
@@ -27,7 +25,7 @@ function SignupForm() {
           body:JSON.stringify(newUser)
       })
       .then(r=>r.json())
-      .then(alert(`Welcome ${newUser.name}`))
+      .then(alert(`Welcome ${newUser.name}!`))
   }
 
 

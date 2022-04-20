@@ -4,8 +4,6 @@ class ReservationsController < ApplicationController
         render json: Reservation.all
     end
     
-    
-    # do i need to get user_id and listing_id?
 
     def create
         current_user = User.find_by(id: session[:user_id]) 
