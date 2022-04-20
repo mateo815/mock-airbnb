@@ -2,7 +2,7 @@ import React from 'react'
 
 function ProfileButton() {
   return (
-    <button>HistoryButton</button>
+    <button>Reservation History</button>
   )
 }
 
